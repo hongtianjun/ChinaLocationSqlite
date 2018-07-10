@@ -68,3 +68,14 @@ class County(Base):
     county_name = Column(String)
     county_name_pinyin = Column(String)
     city_code = Column(String)
+
+# 这是街道哟
+class Street(Base):
+    __tablename__ = 'sysconf_street'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    status = Column(Integer, default=0)
+    street_code = Column(String)
+    street_name = Column(String)
+    street_name_pinyin = Column(String)
+    county_code = Column(String)
