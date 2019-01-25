@@ -7,7 +7,7 @@ from pypinyin import pinyin, lazy_pinyin
 
 from databse import Base,Province,County,City,Street
 
-engine = create_engine('sqlite:///Location4.db')
+engine = create_engine('sqlite:///Location4_12.db')
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
@@ -59,7 +59,7 @@ def createFourLevel(str):
                                 for town_code in towns:
                                     town_name = towns[town_code]
                                     town_pinyin_name = ''.join(lazy_pinyin(town_name))
-                                    town = Street(street_code = town_code,street_name=town_name,street_name_pinyin=town_pinyin_name,county_code=county_code)
+                                    town = Street(street_code = town_code + "000",street_name=town_name,street_name_pinyin=town_pinyin_name,county_code=county_code)
                                     session.add(town)
                             else:
                                 print('country = {0}没有找到',county_code)
